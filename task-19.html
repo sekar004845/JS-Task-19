@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swiggy task</title>
+	<script src="https://code.iconify.design/iconify-icon/1.0.5/iconify-icon.min.js"></script>
+	<style>
+	.container{
+		width:300px;
+		margin:auto;
+		margin-top:100px;
+		box-sizing:border-box;
+		padding:10px;
+		cursor:pointer;
+	}
+	.container:hover{
+		box-shadow:0 0 10px #ccc;
+		border:1px solid #ccc;
+	}
+	.view{
+		border-top: 1px solid #e9e9eb;
+		padding:8px 0;
+		text-align:center;
+		display:none;
+		opacity:0;
+		visibility:hidden;
+	}
+	.container:hover .view{
+		display:block;
+		opacity:1;
+		visibility:visible;
+	}
+	img{
+		width:100%;
+		height:auto;
+	}
+	h3{
+		font-size:16px;
+		margin:10px 0;
+	}
+	.details{
+		display:flex;
+		flex-wrap:wrap;
+		text-align:center;
+		justify-content:space-between;
+	}
+	.row{
+		display:flex;
+		flex-wrap:wrap;
+		align-items:center;
+	}
+	p{
+		margin:5px 0;
+		color:#777;
+		padding:2px 4px;
+		font-size:14px;
+	}
+	.green{
+		width:10%;
+	}
+	.green1{
+		width:20%;
+	}
+	.green3{
+		width:40%;
+	}
+	.review{
+		background-color:#48c479;
+		color:white;
+		
+	}
+	.offer{
+		border-top: 1px solid #e9e9eb;
+		padding:8px 0;
+	}
+	.offer p{
+		color:#8a584b;
+		font-size:15px;
+		font-weight:600;
+	}
+	.icon{
+		font-size:20px;
+	}
+	#inp{
+		width:100px;
+		height:20px;
+		text-align:center;
+	}
+	button{
+		background-color:#fff;
+		border:0;
+		cursor:pointer;
+	}
+	.incre{
+		text-align:center;
+		margin:10px;
+	}
+	.view p{	
+		color:dodgerblue;
+	}
+	.view p:hover{
+	color:#ccc;
+	}
+	</style>
+</head>
+<body>
+<h1>Card increment and decrement</h1>
+<section class="row">
+<section class="container">
+	<img src="https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/Offers_yqoiuk" class="card-img-top" alt="images">
+	<h3>Rohit Sharma Hotel - Tirunelveli</h3>
+	<p>South Indian,</p>
+	<div class="details">
+		<div class="gree">
+			<p class="review"><iconify-icon icon="material-symbols:star-rate"></iconify-icon> 4.9</p>
+		</div>
+		<div class="green">
+			<p>.</p>
+		</div>
+		<div class="green1">
+			<p>45MIN<p>
+		</div>
+		<div class="green2">
+			<p>.</p>
+		</div>
+		<div class="green3">
+			<p>₹450 FOR FOUR</p>
+		</div>
+	</div>
+	<div class="incre">
+		<button id="sub"><iconify-icon icon="ri:subtract-fill"></iconify-icon></button>
+		<input type="text" value="0" id="inp" disabled>
+		<button id="add"><iconify-icon icon="material-symbols:add"></iconify-icon></button>
+	</div>
+	<div class="offer">
+		<p><iconify-icon class="icon" icon="bxs:offer"></iconify-icon> 45% off | Use WELCOME50</p>
+	</div>
+	<div class="view">
+		<p>Quick View</p>
+	<div>
+</section>
+<section>
+	<div id="search">
+	</div>
+</section>
+</section>
+<script>
+	let a= document.getElementById("add");
+	let b= document.getElementById("sub");
+	let c = document.getElementById("inp");
+	let details = document.getElementById("search");
+	a.addEventListener("click",addval);
+	b.addEventListener("click",subval);
+	function addval(){
+		c.value=Number(c.value)+1;
+		read();
+	}
+	function subval(){
+		if(c.value>0){
+			c.value=Number(c.value)-1;
+		}
+		minimize();
+	}
+	let data={};
+	function read(){
+		data['hotalname']="Rohit Sharma Hotel";
+		data['foodname']="veg-biriyani";
+		data['price']="₹450 FOR FOUR";
+		open();
+	}
+	function open(){
+		search.innerHTML +=`<div>
+			<p>${data.hotalname}</p>
+			<p>${data.foodname}</p>
+			<p>${data.price}</p>
+			</div>`;
+		search.style.boxShadow = "0 0 5px #ccc";
+		search.style.padding = "20px";
+		search.style.margin = "20px"; 
+	}
+	function minimize(){
+		search.remove();
+	}
+	</script>
+</body>
+</html>
